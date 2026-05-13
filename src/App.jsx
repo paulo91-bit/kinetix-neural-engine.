@@ -27,7 +27,8 @@ export default function App() {
   };
 
   return (
-    <div className="flex h-screen bg-[#050505] text-[#D2B48C] font-sans overflow-hidden selection:bg-[#8A9A5B] selection:text-black">
+    /* h-[100dvh] ensures the height is perfect even when mobile browser bars appear/disappear */
+    <div className="flex h-[100dvh] bg-[#050505] text-[#D2B48C] font-sans overflow-hidden selection:bg-[#8A9A5B] selection:text-black">
       <NoiseOverlay />
 
       <MobileHeader 
@@ -42,11 +43,15 @@ export default function App() {
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
       />
 
-      <main className="flex-1 flex flex-col relative h-full w-full pt-16 md:pt-0">
+      {/* h-full and overflow-hidden on mobile keeps everything locked in place */}
+      <main className="flex-1 flex flex-col relative h-full w-full pt-16 md:pt-0 overflow-hidden">
         
         <DesktopHeader currentView={currentView} />
 
-        <div className="flex-1 overflow-y-auto custom-scrollbar relative p-4 md:p-8 pb-32">
+        {/* FIX: Removed 'overflow-y-auto' for mobile (md:overflow-y-auto)
+            and added 'flex flex-col' so DiscoverView can fill the space.
+        */}
+        <div className="flex-1 md:overflow-y-auto custom-scrollbar relative p-4 md:p-8 pb-32 md:pb-8 flex flex-col min-h-0">
           {currentView === 'discover' && <DiscoverView />}
           {currentView === 't2v' && <TextToVideoView handleGenerate={handleGenerate} />}
           {currentView === 'i2v' && <ImageToVideoView handleGenerate={handleGenerate} />}

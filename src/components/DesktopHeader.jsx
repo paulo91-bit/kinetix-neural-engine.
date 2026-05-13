@@ -14,14 +14,18 @@ export default function DesktopHeader({ currentView }) {
       </div>
 
       <div className="flex items-center gap-6">
+        {/* Credits Section using #8A9A5B */}
         <div className="hidden sm:flex items-center gap-2 bg-[#8A9A5B]/10 border border-[#8A9A5B]/20 px-4 py-1.5 rounded-full">
           <Sparkles size={14} className="text-[#8A9A5B]" />
           <span className="text-xs font-bold text-[#8A9A5B]">1,250 Credits</span>
         </div>
+        
         <button className="text-white/40 hover:text-white transition-colors">
           <Bell size={20} />
         </button>
-        <div className="w-9 h-9 rounded-full bg-[#D2B48C] border border-[#D2B48C]/50 flex items-center justify-center text-black font-bold cursor-pointer hover:scale-105 transition-transform">
+        
+        {/* Profile Icon Section updated to match #8A9A5B */}
+        <div className="w-9 h-9 rounded-full bg-[#8A9A5B] border border-[#8A9A5B]/50 flex items-center justify-center text-black font-bold cursor-pointer hover:scale-105 transition-transform">
           <User size={18} />
         </div>
       </div>

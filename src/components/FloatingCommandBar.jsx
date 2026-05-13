@@ -24,9 +24,10 @@ export default function FloatingCommandBar({ promptText, setPromptText, handleGe
           className="flex-1 bg-transparent border-none outline-none text-sm text-white placeholder:text-white/30 px-2 md:px-4 h-full font-medium min-w-0"
         />
 
+        {/* Generate button updated to #8A9A5B */}
         <button 
           onClick={handleGenerate}
-          className="shrink-0 bg-[#D2B48C] text-black w-10 h-10 md:w-auto md:px-6 md:h-12 rounded-full flex items-center justify-center gap-2 hover:bg-white transition-colors group"
+          className="shrink-0 bg-[#8A9A5B] text-black w-10 h-10 md:w-auto md:px-6 md:h-12 rounded-full flex items-center justify-center gap-2 hover:bg-white transition-colors group"
         >
           {/* Desktop Text & Arrow */}
           <span className="hidden md:block font-bold uppercase tracking-widest text-[10px]">Generate</span>

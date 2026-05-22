@@ -19,7 +19,7 @@ export default function Sidebar({ currentView, setCurrentView, isMobileMenuOpen,
     `}>
       <div className="h-20 hidden md:flex items-center px-8">
         <div className="text-2xl font-serif italic bg-gradient-to-r from-[#D2B48C] via-white to-[#D2B48C] bg-clip-text text-transparent tracking-[0.2em] drop-shadow-[0_0_8px_rgba(210,180,140,0.4)]">
-          MOTVADD
+          MOTVAD
         </div>
       </div>
 

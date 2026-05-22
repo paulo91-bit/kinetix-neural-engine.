@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 // Core UI Components
 import NoiseOverlay from './components/NoiseOverlay';
@@ -26,6 +26,32 @@ export default function App() {
   // Vault stores all completed jobs: [{ id, prompt, url, createdAt }]
   const [vaultItems, setVaultItems] = useState([]);
 
+  // ==========================================
+  // NEW: Fetch historical videos on mount
+  // ==========================================
+  // ==========================================
+  // NEW: Fetch historical videos on mount
+  // ==========================================
+  useEffect(() => {
+    const fetchVault = async () => {
+      try {
+        // Read from Vite's environment variables, fallback to empty string (relative path)
+        const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+        
+        const res = await fetch(`${API_BASE}/api/v1/engine/vault`);
+        if (res.ok) {
+          const data = await res.json();
+          // Populate the vault with the S3 data
+          setVaultItems(data.items);
+        }
+      } catch (error) {
+        console.error("Failed to load historical vault items:", error);
+      }
+    };
+    
+    fetchVault();
+  }, []);
+    
   const {
     generateVideo,
     status,
@@ -36,11 +62,11 @@ export default function App() {
     reset,
   } = useVideoGeneration();
 
-  // Called when a job completes — saves to vault
+  // Called when a new job completes — adds to the top of the vault
   const handleJobComplete = useCallback((url, prompt) => {
     setVaultItems(prev => [
       {
-        id: Date.now(),
+        id: Date.now().toString(),
         prompt,
         url,
         createdAt: new Date().toISOString(),

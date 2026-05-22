@@ -1,7 +1,10 @@
 import { useState, useRef, useCallback } from 'react';
 
-const API_BASE = '';
+// Read from Vite's environment variables
+const API_BASE = import.meta.env.VITE_API_BASE_URL || ''; 
 const POLL_INTERVAL_MS = 3000; // Poll every 3 seconds
+
+// ... rest of your hook remains the same
 
 /**
  * useVideoGeneration
